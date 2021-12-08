@@ -7,7 +7,7 @@
                             Sửa thương hiệu sản phẩm
                         </header>
                         <div class="panel-body">
-                            <?php 
+                            <?php
                             $message = Session::get('message');
                             if ($message) {
                                 echo '<span class="text-alert">',$message,'</span>';
@@ -26,7 +26,7 @@
                                     <label for="exampleInputPassword1">Mô tả thương hiệu</label>
                                     <textarea style="resize: none;" rows="5" class="form-control" id="exampleInputPassword1" name="brand_product_desc" >{{$edit_pro->brand_desc}}</textarea>
                                 </div>
-                               
+
                                 <button type="submit" name="update-brand-product" class="btn btn-info">Cập nhật thương hiệu</button>
                             </form>
                                 @endforeach
