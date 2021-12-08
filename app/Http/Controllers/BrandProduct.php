@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use DB;
@@ -33,7 +34,9 @@ class BrandProduct extends Controller
     public function all_brand_product()
     {
         $this->authLogin();
-        $all_brand_product = DB::table('tbl_brand_product')->get();//lấy dữ liệu từ database
+//        $all_brand_product = DB::table('tbl_brand_product')->get();//lấy dữ liệu từ database
+//        $all_brand_product = Brand::orderBy('brand_id','DESC')->get(); //lấy dữ liệu có sắp xếp
+        $all_brand_product = Brand::all();                        //lấy toàn bộ dữ liệu
         $manager_category = view('admin.all_brand_product')->with('all_brand_product', $all_brand_product);//gán biến lấy dữ liệu
         return view('admin_layout')->with('admin.all_brand_product', $manager_category);
     }
@@ -41,12 +44,20 @@ class BrandProduct extends Controller
     public function save_brand_product(Request $request)
     {
         $this->authLogin();
+        $data = $request->all();
+        $brand = new Brand();
+        $brand->brand_name = $data['brand_product_name'];
+        $brand->brand_desc = $data['brand_product_desc'];
+        $brand->brand_stt = $data['brand_product_stt'];
+        $brand->save();
 
-        $data = array();
-        $data['brand_name'] = $request->brand_product_name;
-        $data['brand_desc'] = $request->brand_product_desc;
-        $data['brand_stt'] = $request->brand_product_stt;
-        DB::table('tbl_brand_product')->insert($data);
+
+
+//        $data = array();
+//        $data['brand_name'] = $request->brand_product_name;
+//        $data['brand_desc'] = $request->brand_product_desc;
+//        $data['brand_stt'] = $request->brand_product_stt;
+//        DB::table('tbl_brand_product')->insert($data);
         Session::put('message', 'Thêm thương hiệu thành công');
         return Redirect::to('add-brand-product');
     }
@@ -77,7 +88,10 @@ class BrandProduct extends Controller
     public function edit_brand_product($brand_id): View
     {
         $this->authLogin();
-        $edit_brand_product = DB::table('tbl_brand_product')->where('brand_id', $brand_id)->get();
+//        $edit_brand_product = DB::table('tbl_brand_product')->where('brand_id', $brand_id)->get();
+
+        $edit_brand_product = Brand::where('brand_id', $brand_id)->get();  //dùng where sử dụng foreach
+//        $edit_brand_product = Brand::find($brand_id);                     //dùng find không sử dung foreach
         $manager_category = view('admin.edit_brand_product')->with('edit_brand_product', $edit_brand_product);
         return view('admin_layout')->with('admin.edit_brand_product', $manager_category);
     }
@@ -86,10 +100,17 @@ class BrandProduct extends Controller
     public function update_brand_product(Request $request, $brand_id): RedirectResponse
     {
         $this->authLogin();
-        $data = array();
-        $data['brand_name'] = $request->brand_product_name;
-        $data['brand_desc'] = $request->brand_product_desc;
-        DB::table('tbl_brand_product')->where('brand_id', $brand_id)->update($data);
+        $data = $request->all();
+        $brand = Brand::find($brand_id);
+        $brand->brand_name = $data['brand_product_name'];
+        $brand->brand_desc = $data['brand_product_desc'];
+        $brand->save();
+
+
+//        $data = array();
+//        $data['brand_name'] = $request->brand_product_name;
+//        $data['brand_desc'] = $request->brand_product_desc;
+//        DB::table('tbl_brand_product')->where('brand_id', $brand_id)->update($data);
         Session::put('message', 'Cập nhật thành công');
         return Redirect::to('all-brand-product');
     }
