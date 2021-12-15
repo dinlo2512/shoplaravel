@@ -14,8 +14,8 @@
                         <form action="{{URL::to('/saveCart')}}" method="post">
                             {{csrf_field()}}
                             <input type="hidden" name="productid_hidden" value="{{$product->product_id}}"/>
-                        <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ
-                            hàng</button>
+                            <button type="submit" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ
+                                hàng</button>
                         </form>
                     </div>
                 </div>

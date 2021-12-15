@@ -94,4 +94,13 @@ class AdminController extends Controller
 
         return view('admin_layout')->with('admin.view_order',$manager_order_id);
     }
+
+    public function settingAdmin()
+    {
+        $this->authLogin();
+        $admin_profile = DB::table('tbl_admin')->get();//lấy dữ liệu từ database
+//        $all_brand_product = Brand::orderBy('brand_id','DESC')->get(); //lấy dữ liệu có sắp xếp
+        $manager_admin = view('admin.setting_admin')->with('setting_admin', $admin_profile);//gán biến lấy dữ liệu
+        return view('admin_layout')->with('admin.setting_admin', $manager_admin);
+    }
 }

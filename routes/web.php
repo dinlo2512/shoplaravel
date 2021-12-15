@@ -33,8 +33,11 @@ Route::get('/admin','AdminController@index');
 Route::get('/dashboard','AdminController@show_dashboard');
 Route::get('/logout','AdminController@logout');
 Route::post('/dashboard','AdminController@dashboard');
+
 Route::get('/manage-order','AdminController@manageOrder');
 Route::get('/view-order/{orderId}','AdminController@viewOrder');
+
+Route::get('/setting-admin','AdminController@settingAdmin');
 
 
 
@@ -81,6 +84,8 @@ Route::post('/saveCart','CartController@saveCart');
 Route::get('/show-cart','CartController@show_cart');
 Route::get('/delete-cart/{rowId}','CartController@delete_cart');
 Route::post('/update-cart','CartController@update_cart');
+
+
 //CheckOut
 Route::get('/login-checkout','CheckController@login_checkout');
 Route::get('/login-checkoutt','CheckController@loginCheckout');
