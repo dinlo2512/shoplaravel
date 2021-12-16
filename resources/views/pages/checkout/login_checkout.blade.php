@@ -5,7 +5,7 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Đăng nhập tài khoản</h2>
-						<?php 
+						<?php
 						$message = Session::get('message');
 						if ($message) {
 							echo '<span class="text-alert">',$message,'</span>';
@@ -17,7 +17,7 @@
 							<input type="text" name="login_customer" placeholder="Tên đăng nhập" />
 							<input type="password"name="login_password" placeholder="Password" />
 							<span>
-								<input type="checkbox" class="checkbox"> 
+								<input type="checkbox" class="checkbox">
 								Nhớ tài khoản
 							</span>
 							<button type="submit" class="btn btn-default">Đăng nhập</button>
@@ -32,16 +32,17 @@
 						<h2>Đăng kí tài khoản!</h2>
 						<form action="{{URL::to('/add-customer')}}" method="post">
 							{{csrf_field()}}
-							<input type="text" placeholder="Tên đăng nhập" name="customer_name" />
-							<input type="email" placeholder="Email" name="customer_email"/>
-							<input type="password" placeholder="Password" name="customer_password"/>
-							<input type="text" placeholder="Điện thoại" name="customer_phone"/>
-							<button type="submit" class="btn btn-default">Đăng kí</button>
+							<input type="text" placeholder="Tên đăng nhập" name="customer_name" required/>
+							<input type="email" placeholder="Email" name="customer_email" required/>
+							<input type="password" placeholder="Password" name="customer_password" required />
+							<input type="text" placeholder="Điện thoại" name="customer_phone" required />
+							<button type="submit" class="btn btn-default" name="submit">Đăng kí</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>
 			</div>
 	</section><!--/form-->
+
 
 
 @endsection

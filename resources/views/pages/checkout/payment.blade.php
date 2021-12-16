@@ -86,6 +86,7 @@
         <form action="{{URL::to('/order-place')}}" method="post">
             {{csrf_field()}}
         <div class="payment-options">
+            <h4></h4>
 					<span>
 						<label><input name="payment_option" value="1" type="checkbox"> Trả bằng thẻ ATM</label>
 					</span>
@@ -99,5 +100,9 @@
     </section> <!--/#cart_items-->
 
 
-
+    <script type="text/javascript">
+        $('input[type="checkbox"]').on('change',function (){
+            $('input[type="checkbox"]').not(this).prop('checked',false);
+        });
+    </script>
 @endsection

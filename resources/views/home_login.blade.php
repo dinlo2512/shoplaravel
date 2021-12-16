@@ -16,12 +16,13 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head><!--/head-->
 
 <body>
@@ -51,7 +52,7 @@
                 </div>
             </div>
         </div><!--/header_top-->
-        
+
         <div class="header-middle"><!--header-middle-->
             <div class="container">
                 <div class="row">
@@ -70,7 +71,7 @@
                                     <li><a href="#">UK</a></li>
                                 </ul>
                             </div>
-                            
+
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                     DOLLAR
@@ -86,7 +87,7 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                               <?php 
+                               <?php
                                     $customer_id = Session::get('customer_id');
                                     $customer_name = Session::get('customer_name');
                                     if($customer_id!=NULL){
@@ -97,7 +98,7 @@
                                 ?>
                                 <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-crosshairs"></i> Tài khoản</a></li>
                                  <?php } ?>
-                                 <?php 
+                                 <?php
                                     $customer_id = Session::get('customer_id');
                                     if($customer_id!=NULL){
                                 ?>
@@ -107,7 +108,7 @@
                                 ?>
                                 <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                  <?php } ?>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -143,7 +144,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -158,7 +159,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -173,7 +174,7 @@
                                 <h2>24 DEC 2014</h2>
                             </div>
                         </div>
-                        
+
                         <div class="col-sm-3">
                             <div class="video-gallery text-center">
                                 <a href="#">
@@ -198,7 +199,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-widget">
             <div class="container">
                 <div class="row">
@@ -260,11 +261,11 @@
                             </form>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -273,11 +274,11 @@
                 </div>
             </div>
         </div>
-        
-    </footer><!--/Footer-->
-    
 
-  
+    </footer><!--/Footer-->
+
+
+
     <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
     <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/jquery.scrollUp.min.js')}}"></script>

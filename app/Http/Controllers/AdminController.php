@@ -81,16 +81,19 @@ class AdminController extends Controller
     {
         $this->authLogin();
         $order_by_id = DB::table('tbl_order')//lấy dữ liệu từ database
+        ->where('tbl_order.order_id','=',$orderId)
         ->join('tbl_customer', 'tbl_order.customer_id', '=', 'tbl_customer.customer_id')
         ->join('tbl_shipping', 'tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
-            ->select('tbl_order.*', 'tbl_customer.*','tbl_shipping.*')
+        ->join('tbl_order_detail','tbl_order.order_id','=','tbl_order_detail.order_id')
+            ->select('tbl_order.*', 'tbl_customer.*','tbl_shipping.*','tbl_order_detail.*')
             ->first();
 
-        $order_detail = DB::table('tbl_order')//lấy dữ liệu từ database
-        ->join('tbl_order_detail', 'tbl_order.order_id', '=', 'tbl_order_detail.order_id')
+        $order_detail = DB::table('tbl_order')
+            ->where('tbl_order.order_id','=',$orderId)
+            ->join('tbl_order_detail','tbl_order.order_id','=','tbl_order_detail.order_id')
             ->select('tbl_order.*','tbl_order_detail.*')
             ->orderby('tbl_order.order_id','desc')->get();
-        $manager_order_id = view('admin.view_order')->with('order_by_id', $order_by_id)->with('order_detail',$order_detail);
+        $manager_order_id = view('admin.view_order')->with('order_by_id', $order_by_id)->with('order_detail', $order_detail);
 
         return view('admin_layout')->with('admin.view_order',$manager_order_id);
     }

@@ -32,10 +32,10 @@
                     <h2>Đăng kí tài khoản!</h2>
                     <form action="{{URL::to('/add-customerr')}}" method="post">
                         {{csrf_field()}}
-                        <input type="text" placeholder="Tên đăng nhập" name="customer_name" />
-                        <input type="email" placeholder="Email" name="customer_email"/>
-                        <input type="password" placeholder="Password" name="customer_password"/>
-                        <input type="text" placeholder="Điện thoại" name="customer_phone"/>
+                        <input type="text" placeholder="Tên đăng nhập" name="customer_name" required />
+                        <input type="email" placeholder="Email" name="customer_email" required/>
+                        <input type="password" placeholder="Password" name="customer_password" required/>
+                        <input type="text" placeholder="Điện thoại" name="customer_phone" required/>
                         <button type="submit" class="btn btn-default">Đăng kí</button>
                     </form>
                 </div><!--/sign up form-->

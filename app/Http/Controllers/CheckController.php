@@ -78,6 +78,7 @@ class CheckController extends Controller
         $data['shipping_email'] = $request->shipping_email;
         $data['shipping_phone'] = $request->shipping_phone;
         $data['shipping_address'] = $request->shipping_address;
+        $data['shipping_notes'] = $request->shipping_notes;
 
 
         $shipping_id = DB::table('tbl_shipping')->insertGetId($data);
@@ -103,7 +104,7 @@ class CheckController extends Controller
         $data = array();
         $data['payment_menthod'] = $request->payment_option;
         $data['payment_stt'] = 'Đang chờ thanh toán';
-        $payment_id = DB::table('tbl_payment')->insertGetId($data); 
+        $payment_id = DB::table('tbl_payment')->insertGetId($data);
 
         //insert tbl_order
         $order_data = array();
@@ -132,7 +133,7 @@ class CheckController extends Controller
 
 
         }
-        if ($data['payment_menthod'] == 2) 
+        if ($data['payment_menthod'] == 2)
         {
             Cart::destroy();
             return Redirect::to('/end');
